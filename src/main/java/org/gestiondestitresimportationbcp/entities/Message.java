@@ -1,5 +1,6 @@
 package org.gestiondestitresimportationbcp.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -7,11 +8,17 @@ import jakarta.persistence.Id;
 @Entity
 public class Message {
     @Id
+    @Column( name = "NumeroMessage")
     private Long numeroMessage;
+    @Column(name = "Emetteur")
     private String emetteur;
+    @Column (name = "Destinataire")
     private  int destinataire;
-    private String dateMessage;// il faut qu il soit date
+    @Column(name = "DateDeMessage")
+    private String dateMessage; // il faut qu il soit date
+   @Column(name = "TypeDeMessage")
     private String typeMessage;
+   @Column(name = "Fonction")
     private String fonction ;
 
     public Message() {
