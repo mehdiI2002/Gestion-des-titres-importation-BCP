@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pn:DemandeDomiciliation xmlns:pn="http://portnet.ma/DemandeDomiciliation">
+    <DemandeDomiciliationMessage>
+        <HeaderMessage>
+            <NumeroMessage>12650948</NumeroMessage>
+            <Emetteur>611PNET00100</Emetteur>
+            <Destinataire>190</Destinataire>
+            <DateMessage>2022-05-06T14:07:00</DateMessage>
+            <TypeMessage>DDD</TypeMessage>
+            <Fonction>9</Fonction>
+        </HeaderMessage>
+        <Operateur>
+            <Nom>ALF KESSAB AL MAGHREB</Nom>
+            <Centre>81</Centre>
+            <TypeIdentification>RC</TypeIdentification>
+            <NumIdentification>223975</NumIdentification>
+            <IdentifiantDouane>88665</IdentifiantDouane>
+            <RibBancaire>190780212115909011000206</RibBancaire>
+            <IdFiscalUnique>40226585</IdFiscalUnique>
+        </Operateur>
+        <Banque>
+            <CodeBanque>190</CodeBanque>
+            <Guichet>7808</Guichet>
+            <Localite>780</Localite>
+        </Banque>
+        <Titre>
+            <NumEnregistrement>2025100000000929710</NumEnregistrement>
+            <Categorie>1</Categorie>
+            <TypeDemande>1</TypeDemande>
+            <Importateur>ALF KESSAB AL MAGHREB</Importateur>
+            <Expediteur>BUNGE</Expediteur>
+            <RegimeDouanier>010</RegimeDouanier>
+            <BureauDouanier>309</BureauDouanier>
+            <MontantTotal>166500.000</MontantTotal>
+            <MontantFOB>126000.000</MontantFOB>
+            <MontantFret>40500.000</MontantFret>
+            <MontantAssuranceAcessoires>.000</MontantAssuranceAcessoires>
+            <Devise>USD</Devise>
+            <ConditionsLivraison>2</ConditionsLivraison>
+            <Incoterm>CFR</Incoterm>
+            <NumeroFichier></NumeroFichier>
+            <pn:PaysProvenanceInfo>
+                <PaysProvenance>US</PaysProvenance>
+            </pn:PaysProvenanceInfo>
+        </Titre>
+        <pn:Marchandise>
+            <MarchandiseInfo>
+                <Nomenclature>2303300000</Nomenclature>
+                <PaysOrigine>US</PaysOrigine>
+                <Designation>DDGS</Designation>
+                <Quantite>450000.000</Quantite>
+                <UnitComplementaire>029</UnitComplementaire>
+                <PoidNet>450000.000</PoidNet>
+            </MarchandiseInfo>
+        </pn:Marchandise>
+    </DemandeDomiciliationMessage>
+</pn:DemandeDomiciliation>
