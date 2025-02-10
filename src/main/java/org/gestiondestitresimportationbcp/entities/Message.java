@@ -6,11 +6,19 @@ import jakarta.persistence.Id;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Date;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Message {
     @Id
     @Column(name = "NumeroMessage")
@@ -28,7 +36,8 @@ public class Message {
 
     @Column(name = "DateDeMessage")
     @XmlElement(name = "DateMessage")
-    private Date dateMessage; // il faut qu il soit date
+    private Date dateMessage;
+    @XmlElement(name = "TypeMessage")// il faut qu il soit date
     @Column(name = "TypeDeMessage")
     private String typeMessage;
 
@@ -37,39 +46,6 @@ public class Message {
     @XmlElement(name = "Fonction")
     private String fonction;
 
-    public Message(Long numeroMessage, String emetteur, int destinataire, Date dateMessage, String typeMessage, String fonction) {
-        this.numeroMessage = numeroMessage;
-        this.emetteur = emetteur;
-        this.destinataire = destinataire;
-        this.dateMessage = dateMessage;
-        this.typeMessage = typeMessage;
-        this.fonction = fonction;
-    }
 
-    public Message() {
-    }
 
-    public Long getNumeroMessage() {
-        return numeroMessage;
-    }
-
-    public String getEmetteur() {
-        return emetteur;
-    }
-
-    public int getDestinataire() {
-        return destinataire;
-    }
-
-    public Date getDateMessage() {
-        return dateMessage;
-    }
-
-    public String getTypeMessage() {
-        return typeMessage;
-    }
-
-    public String getFonction() {
-        return fonction;
-    }
 }
