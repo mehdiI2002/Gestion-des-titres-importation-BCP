@@ -3,34 +3,50 @@ package org.gestiondestitresimportationbcp.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import java.util.Date;
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Message {
     @Id
-    @Column( name = "NumeroMessage")
+    @Column(name = "NumeroMessage")
+    @XmlElement(name = "NumeroMessage")
     private Long numeroMessage;
+
     @Column(name = "Emetteur")
+    @XmlElement(name = "Emetteur")
     private String emetteur;
-    @Column (name = "Destinataire")
-    private  int destinataire;
+
+
+    @Column(name = "Destinataire")
+    @XmlElement(name = "Destinataire")
+    private int destinataire;
+
     @Column(name = "DateDeMessage")
-    private String dateMessage; // il faut qu il soit date
-   @Column(name = "TypeDeMessage")
+    @XmlElement(name = "DateMessage")
+    private Date dateMessage; // il faut qu il soit date
+    @Column(name = "TypeDeMessage")
     private String typeMessage;
-   @Column(name = "Fonction")
-    private String fonction ;
 
-    public Message() {
 
-    }
-    public Message(Long numeroMessage, String emetteur, int destinataire, String dateMessage, String typeMessage, String fonction) {
+    @Column(name = "Fonction")
+    @XmlElement(name = "Fonction")
+    private String fonction;
+
+    public Message(Long numeroMessage, String emetteur, int destinataire, Date dateMessage, String typeMessage, String fonction) {
         this.numeroMessage = numeroMessage;
         this.emetteur = emetteur;
         this.destinataire = destinataire;
         this.dateMessage = dateMessage;
         this.typeMessage = typeMessage;
         this.fonction = fonction;
+    }
+
+    public Message() {
     }
 
     public Long getNumeroMessage() {
@@ -45,7 +61,7 @@ public class Message {
         return destinataire;
     }
 
-    public String getDateMessage() {
+    public Date getDateMessage() {
         return dateMessage;
     }
 
@@ -56,30 +72,4 @@ public class Message {
     public String getFonction() {
         return fonction;
     }
-
-    public void setNumeroMessage(Long numeroMessage) {
-        this.numeroMessage = numeroMessage;
-    }
-
-    public void setEmetteur(String emetteur) {
-        this.emetteur = emetteur;
-    }
-
-    public void setDestinataire(int destinataire) {
-        this.destinataire = destinataire;
-    }
-
-    public void setDateMessage(String dateMessage) {
-        this.dateMessage = dateMessage;
-    }
-
-    public void setTypeMessage(String typeMessage) {
-        this.typeMessage = typeMessage;
-    }
-
-    public void setFonction(String fonction) {
-        this.fonction = fonction;
-    }
-
-
 }
