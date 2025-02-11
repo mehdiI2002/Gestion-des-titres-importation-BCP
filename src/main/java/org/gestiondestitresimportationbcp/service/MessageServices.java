@@ -5,6 +5,6 @@ import org.gestiondestitresimportationbcp.entities.Message;
 import java.util.List;
 
 public interface MessageServices {
-    void insertMessage();
+    void insertMessage(String filePath);
     List<Message> selectMessages();
 }

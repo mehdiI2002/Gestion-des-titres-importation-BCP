@@ -1,6 +1,6 @@
 package org.gestiondestitresimportationbcp.service;
 
-import org.gestiondestitresimportationbcp.entities.DemandeDomiciliationMessage;
+import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
 import org.gestiondestitresimportationbcp.entities.Message;
 import org.gestiondestitresimportationbcp.repositories.MessageRepository;
 import org.springframework.stereotype.Service;
@@ -19,8 +19,8 @@ public class MessageServicesDefault implements MessageServices {
         this.parserFile = parserFile;
     }
 
-    public  void insertMessage(){
-       DemandeDomiciliationMessage demandeDomiciliationMessage = parserFile.parseFile();
+    public  void insertMessage(String filePath){
+       DemandeDomiciliationMessage demandeDomiciliationMessage = parserFile.parseFile(filePath);
        Message message = demandeDomiciliationMessage.getHeaderMessage();
        messageRepository.save(message);
     }

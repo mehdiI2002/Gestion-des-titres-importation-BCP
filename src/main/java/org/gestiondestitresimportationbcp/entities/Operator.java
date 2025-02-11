@@ -5,19 +5,13 @@ import jakarta.persistence.Id;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.math.BigInteger;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+
 public class Operator {
     @Id
     @XmlElement(name="IdFiscalUnique")
@@ -37,9 +31,72 @@ private long identifiantDouane;
     @XmlElement(name = "RibBancaire")
 private BigInteger ribBancaire ;
 
+    public Operator() {
+    }
 
+    public Operator(long idFiscalUnique, String nom, int centre, String typeIdentification, long numIdentification, long identifiantDouane, BigInteger ribBancaire) {
+        this.idFiscalUnique = idFiscalUnique;
+        this.nom = nom;
+        this.centre = centre;
+        this.typeIdentification = typeIdentification;
+        this.numIdentification = numIdentification;
+        this.identifiantDouane = identifiantDouane;
+        this.ribBancaire = ribBancaire;
+    }
 
+    public long getIdentifiantDouane() {
+        return identifiantDouane;
+    }
 
+    public long getIdFiscalUnique() {
+        return idFiscalUnique;
+    }
 
+    public String getNom() {
+        return nom;
+    }
 
+    public int getCentre() {
+        return centre;
+    }
+
+    public String getTypeIdentification() {
+        return typeIdentification;
+    }
+
+    public long getNumIdentification() {
+        return numIdentification;
+    }
+
+    public BigInteger getRibBancaire() {
+        return ribBancaire;
+    }
+
+    public void setIdFiscalUnique(long idFiscalUnique) {
+        this.idFiscalUnique = idFiscalUnique;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setCentre(int centre) {
+        this.centre = centre;
+    }
+
+    public void setTypeIdentification(String typeIdentification) {
+        this.typeIdentification = typeIdentification;
+    }
+
+    public void setNumIdentification(long numIdentification) {
+        this.numIdentification = numIdentification;
+    }
+
+    public void setIdentifiantDouane(long identifiantDouane) {
+        this.identifiantDouane = identifiantDouane;
+    }
+
+    public void setRibBancaire(BigInteger ribBancaire) {
+        this.ribBancaire = ribBancaire;
+    }
 }
