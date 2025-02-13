@@ -14,7 +14,6 @@ import lombok.Setter;
 public class DemandeDomiciliation {
     @XmlElement(name = "DemandeDomiciliationMessage")
     private DemandeDomiciliationMessage demandeDomiciliationMessage;
-
     public DemandeDomiciliationMessage getDemandeDomiciliationMessage() {
         return demandeDomiciliationMessage;
     }

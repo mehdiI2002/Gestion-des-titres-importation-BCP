@@ -46,13 +46,13 @@ public List<Operator> selectOperators(){
        return titreImportation.afficherTitreImportation();
     }
     @PostMapping("/processFile")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
+    public ResponseEntity<String> uploadFile(@RequestParam("files") MultipartFile[] files) {
+        if (files.length == 0) {
             return ResponseEntity.badRequest().body("Le fichier est vide");
         }
       else {
-         fileServices.uploadFile("C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP PFE\\Livrable\\Gestion-des-titres-importation-BCP\\src\\main\\resources\\static\\",file);
-            return ResponseEntity.ok("Fichier " + file.getOriginalFilename()+" est envoyé avec succès ");
+       List<String > response =  fileServices.uploadFile(files);
+            return ResponseEntity.ok(String.join("\n",response));
         }
     }
 }

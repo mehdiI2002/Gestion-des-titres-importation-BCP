@@ -3,16 +3,10 @@ package org.gestiondestitresimportationbcp.models;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.gestiondestitresimportationbcp.entities.Message;
-import org.gestiondestitresimportationbcp.entities.Operator;
-import org.gestiondestitresimportationbcp.entities.TitreImportation;
+import org.gestiondestitresimportationbcp.entities.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 public class DemandeDomiciliationMessage {
 
@@ -25,15 +19,19 @@ public class DemandeDomiciliationMessage {
     @XmlElement(name = "Titre")
     private TitreImportation titre;
 
-    /*@XmlElement(name = "Banque")
+    @XmlElement(name = "Banque")
     private Banque banque;
-
-
-
     // Cet élément est défini avec le préfixe pn, donc il faut préciser le namespace
     @XmlElement(name = "Marchandise", namespace = "http://portnet.ma/DemandeDomiciliation")
     private Marchandise marchandise;
-*/
+
+    public DemandeDomiciliationMessage(Message headerMessage, Operator operateur, TitreImportation titre, Banque banque, Marchandise marchandise) {
+        this.headerMessage = headerMessage;
+        this.operateur = operateur;
+        this.titre = titre;
+        this.banque = banque;
+        this.marchandise = marchandise;
+    }
 
     public Message getHeaderMessage() {
         return headerMessage;
@@ -47,5 +45,15 @@ public class DemandeDomiciliationMessage {
         return titre;
     }
 
+    public Banque getBanque() {
+        return banque;
+    }
+
+    public Marchandise getMarchandise() {
+        return marchandise;
+    }
+
+    public DemandeDomiciliationMessage() {
+    }
 }
 
