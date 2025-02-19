@@ -1,11 +1,12 @@
 package org.gestiondestitresimportationbcp.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+import org.gestiondestitresimportationbcp.models.PaysProvenanceInfo;
+
 import java.util.Date;
 
 @Entity
@@ -13,24 +14,31 @@ import java.util.Date;
 
 public class Message {
     @Id
-    @Column(name = "NumeroMessage")
+    @Column(name = "Numero_Message")
     @XmlElement(name = "NumeroMessage")
     private Long numeroMessage;
+
+
+    @Embedded
+    @XmlElement(name = "PaysProvenanceInfo", namespace = "http://portnet.ma/DemandeDomiciliation")
+    private PaysProvenanceInfo paysProvenanceInfo;
+
+
 
     @Column(name = "Emetteur")
     @XmlElement(name = "Emetteur")
     private String emetteur;
 
 
+
     @Column(name = "Destinataire")
     @XmlElement(name = "Destinataire")
     private int destinataire;
-
-    @Column(name = "DateDeMessage")
+    @Column(name = "Date_de_Message")
     @XmlElement(name = "DateMessage")
     private Date dateMessage;
     @XmlElement(name = "TypeMessage")// il faut qu il soit date
-    @Column(name = "TypeDeMessage")
+    @Column(name = "Type_De_Message")
     private String typeMessage;
 
 

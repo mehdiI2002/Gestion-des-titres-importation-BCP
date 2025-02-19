@@ -1,4 +1,5 @@
 package org.gestiondestitresimportationbcp.models;
+import jakarta.persistence.Id;
 import jakarta.xml.bind.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,5 +17,13 @@ public class DemandeDomiciliation {
     private DemandeDomiciliationMessage demandeDomiciliationMessage;
     public DemandeDomiciliationMessage getDemandeDomiciliationMessage() {
         return demandeDomiciliationMessage;
+    }
+
+    @XmlAccessorType(XmlAccessType.FIELD)
+    public static class PaysProvenanceInfo {
+        @Id
+        private  Long  id ;
+        private String  PaysProvenance;
+
     }
 }

@@ -9,13 +9,10 @@ import jakarta.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-
 public class Banque {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @XmlTransient
-    private Long id;
-    @Column(name = "CodeBanque")
+    @Column(name = "Code_Banque")
     @XmlElement(name = "CodeBanque")
     private Long codeBanque;
     @Column(name = "Guichet")
@@ -29,16 +26,14 @@ public class Banque {
     public Banque() {
     }
 
-    public Banque(Long id, Long codeBanque, long guichet, long localite) {
-        this.id = id;
+    public Banque(Long codeBanque, long guichet, long localite) {
+
         this.codeBanque = codeBanque;
         this.guichet = guichet;
         this.localite = localite;
     }
 
-    public Long getId() {
-        return id;
-    }
+
 
     public Long getCodeBanque() {
         return codeBanque;
@@ -52,9 +47,7 @@ public class Banque {
         return localite;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public void setCodeBanque(Long codeBanque) {
         this.codeBanque = codeBanque;

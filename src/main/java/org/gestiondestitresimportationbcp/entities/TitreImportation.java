@@ -1,79 +1,79 @@
 package org.gestiondestitresimportationbcp.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-
-
+import jakarta.xml.bind.annotation.XmlTransient;
+import org.gestiondestitresimportationbcp.models.PaysProvenanceInfo;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table
 public class TitreImportation  {
    @Id
    @XmlElement(name="NumEnregistrement")
-   @Column(name = "NumEnregistrement")
+   @Column
     private Long numEnregistrement;
+    @Transient
+    @XmlElement(name = "PaysProvenanceInfo", namespace = "http://portnet.ma/DemandeDomiciliation")
+    private PaysProvenanceInfo paysProvenanceInfo;
 
-@Column(name = "Categorie")
+@Column
    @XmlElement(name = "Categorie")
     private int Categorie;
 
-    @Column(name = "TypeDemande")
+    @Column
     @XmlElement(name ="TypeDemande")
     private int typeDedmande;
 
-@Column(name =  "Importateur")
+@Column
     @XmlElement(name  = "Importateur")
     private String importateur;
 
-@Column(name = "Expediteur")
+@Column
     @XmlElement(name = "Expediteur")
     private String expediteur;
 
-@Column(name = "RegimeDouanier")
+@Column
     @XmlElement(name = "RegimeDouanier")
     private int regimeDouanier;
 
-@Column(name = "BureauDouanier")
+@Column
     @XmlElement(name = "BureauDouanier")
     private int bureauDouanier ;
 
-@Column(name = "MontantTotal")
+@Column
     @XmlElement(name = "MontantTotal")
     private double  montantTotale;
 
-@Column(name = "MontantFOB")
+@Column
     @XmlElement(name = "MontantFOB")
     private double montantFOB;
 
-@Column(name = "MontantFret")
+@Column
     @XmlElement(name="MontantFret")
     private double motantFret;
 
-@Column(name = "MontantAssuranceAcessoires")
+@Column
     @XmlElement(name = "MontantAssuranceAcessoires")
     private String montantAssuranceAcessoires;
 
-@Column(name =  "Devise")
+@Column
     @XmlElement(name = "Devise")
     private String devise;
-@Column(name = "ConditionsLivraison")
+@Column
     @XmlElement(name = "ConditionsLivraison")
     private int  ConditionsLivraison;
 
-@Column(name = "Incoterm")
+@Column
     @XmlElement(name = "Incoterm")
     private String incotermString;
 
-    public TitreImportation() {
-    }
-
-    public TitreImportation(Long numEnregistrement, int categorie, int typeDedmande, String importateur, String expediteur, int regimeDouanier, int bureauDouanier, double montantTotale, double montantFOB, double motantFret, String montantAssuranceAcessoires, String devise, int conditionsLivraison, String incotermString) {
+@XmlTransient
+@OneToOne
+private Operator operator;
+    public TitreImportation(Long numEnregistrement, PaysProvenanceInfo paysProvenanceInfo, int categorie, int typeDedmande, String importateur, String expediteur, int regimeDouanier, int bureauDouanier, double montantTotale, double montantFOB, double motantFret, String montantAssuranceAcessoires, String devise, int conditionsLivraison, String incotermString, Operator operator) {
         this.numEnregistrement = numEnregistrement;
+        this.paysProvenanceInfo = paysProvenanceInfo;
         Categorie = categorie;
         this.typeDedmande = typeDedmande;
         this.importateur = importateur;
@@ -87,6 +87,14 @@ public class TitreImportation  {
         this.devise = devise;
         ConditionsLivraison = conditionsLivraison;
         this.incotermString = incotermString;
+        this.operator = operator;
+    }
+
+    public TitreImportation() {
+    }
+
+    public Operator getOperator() {
+        return operator;
     }
 
     public Long getNumEnregistrement() {
@@ -199,6 +207,14 @@ public class TitreImportation  {
 
     public void setIncotermString(String incotermString) {
         this.incotermString = incotermString;
+    }
+
+    public PaysProvenanceInfo getPaysProvenanceInfo() {
+        return paysProvenanceInfo;
+    }
+
+    public void setOperator(Operator operator) {
+        this.operator = operator;
     }
 }
 

@@ -7,35 +7,34 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-
 public class MarchandiseInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @XmlTransient
     private Long id ;
-    @Column(name = "Nomenclature")
+    @Column
     @XmlElement(name = "Nomenclature")
     private  long nomenclature;
 
-    @Column(name = "PaysOrigine")
+    @Column
     @XmlElement(name = "PaysOrigine")
     private String paysOrigine;
 
 
-    @Column(name = "Designation")
+    @Column
     @XmlElement(name = "Designation")
     private String designation ;
 
 
-    @Column(name = "Quantite")
+    @Column
     @XmlElement(name = "Quantite")
     private double quantite ;
 
-    @Column(name = "UnitComplementaire")
+    @Column
     @XmlElement(name = "UnitComplementaire")
     private int uniteComplementaire;
 
-    @Column(name = "PoidNet")
+    @Column
     @XmlElement(name = "PoidNet")
     private double poidsUnit;
 

@@ -19,8 +19,7 @@ public class MessageServicesDefault implements MessageServices {
         this.parserFile = parserFile;
     }
 
-    public  void insertMessage(String filePath){
-       DemandeDomiciliationMessage demandeDomiciliationMessage = parserFile.parseFile(filePath);
+    public  void insertMessage( DemandeDomiciliationMessage demandeDomiciliationMessage){
        Message message = demandeDomiciliationMessage.getHeaderMessage();
        messageRepository.save(message);
     }

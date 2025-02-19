@@ -1,10 +1,11 @@
 package org.gestiondestitresimportationbcp.service;
 
-import org.gestiondestitresimportationbcp.entities.TitreImportation;
+import org.gestiondestitresimportationbcp.dto.TitreImportationDTO;
+import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
 
 import java.util.List;
 
 public interface TitreImportationServices {
-    void insertTitle();
-    List<TitreImportation> afficherTitreImportation();
+    void insertTitle( DemandeDomiciliationMessage demandeDomiciliationMessage);
+    List<TitreImportationDTO> afficherTitreImportation();
 }

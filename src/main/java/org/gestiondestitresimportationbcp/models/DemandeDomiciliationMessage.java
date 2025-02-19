@@ -9,7 +9,6 @@ import org.gestiondestitresimportationbcp.entities.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 public class DemandeDomiciliationMessage {
-
     @XmlElement(name = "HeaderMessage")
     private Message headerMessage;
 
@@ -25,12 +24,14 @@ public class DemandeDomiciliationMessage {
     @XmlElement(name = "Marchandise", namespace = "http://portnet.ma/DemandeDomiciliation")
     private Marchandise marchandise;
 
+
     public DemandeDomiciliationMessage(Message headerMessage, Operator operateur, TitreImportation titre, Banque banque, Marchandise marchandise) {
         this.headerMessage = headerMessage;
         this.operateur = operateur;
         this.titre = titre;
         this.banque = banque;
         this.marchandise = marchandise;
+
     }
 
     public Message getHeaderMessage() {
@@ -52,6 +53,8 @@ public class DemandeDomiciliationMessage {
     public Marchandise getMarchandise() {
         return marchandise;
     }
+
+
 
     public DemandeDomiciliationMessage() {
     }

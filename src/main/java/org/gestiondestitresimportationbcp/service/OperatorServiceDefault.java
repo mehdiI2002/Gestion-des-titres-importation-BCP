@@ -12,12 +12,9 @@ import java.util.List;
 public class OperatorServiceDefault implements OperatorServices {
     @Autowired
     private  OperateurRepository operateurRepository;
-    @Autowired
-    private  ParserFile parserFile;
 
     @Override
-    public void insertOperator() {
-        DemandeDomiciliationMessage demandeDomiciliationMessage = parserFile.parseFile("src\\main\\resources\\static\\PORTNET_DDD_20220506160729_12650948.xml");
+    public void insertOperator( DemandeDomiciliationMessage demandeDomiciliationMessage) {
         Operator operator = demandeDomiciliationMessage.getOperateur();
         operateurRepository.save(operator);
     }

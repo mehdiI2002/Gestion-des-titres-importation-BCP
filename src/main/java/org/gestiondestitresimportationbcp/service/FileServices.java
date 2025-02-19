@@ -1,11 +1,10 @@
 package org.gestiondestitresimportationbcp.service;
 
 import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.io.File;
 
 public interface FileServices {
-    DemandeDomiciliationMessage parseFile(String filePath);
-    List<String> uploadFile(MultipartFile[] files);
+    DemandeDomiciliationMessage parseFile(File file);
+    public void fileswatcher();
 }
