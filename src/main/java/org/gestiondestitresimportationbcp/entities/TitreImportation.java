@@ -5,7 +5,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlTransient;
-import org.gestiondestitresimportationbcp.models.PaysProvenanceInfo;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class TitreImportation  {
@@ -13,7 +13,7 @@ public class TitreImportation  {
    @XmlElement(name="NumEnregistrement")
    @Column
     private Long numEnregistrement;
-    @Transient
+    @OneToOne
     @XmlElement(name = "PaysProvenanceInfo", namespace = "http://portnet.ma/DemandeDomiciliation")
     private PaysProvenanceInfo paysProvenanceInfo;
 
@@ -71,7 +71,18 @@ public class TitreImportation  {
 @XmlTransient
 @OneToOne
 private Operator operator;
-    public TitreImportation(Long numEnregistrement, PaysProvenanceInfo paysProvenanceInfo, int categorie, int typeDedmande, String importateur, String expediteur, int regimeDouanier, int bureauDouanier, double montantTotale, double montantFOB, double motantFret, String montantAssuranceAcessoires, String devise, int conditionsLivraison, String incotermString, Operator operator) {
+@XmlTransient
+@OneToOne
+private Message message ;
+
+@XmlTransient
+@OneToOne
+private Banque banque;
+@XmlTransient
+@OneToOne
+    private MarchandiseInfo marchandiseInfo;
+
+ public TitreImportation(Long numEnregistrement, PaysProvenanceInfo paysProvenanceInfo, int categorie, int typeDedmande, String importateur, String expediteur, int regimeDouanier, int bureauDouanier, double montantTotale, double montantFOB, double motantFret, String montantAssuranceAcessoires, String devise, int conditionsLivraison, String incotermString, Operator operator,Message message,Banque banque,MarchandiseInfo marchandiseInfo) {
         this.numEnregistrement = numEnregistrement;
         this.paysProvenanceInfo = paysProvenanceInfo;
         Categorie = categorie;
@@ -88,6 +99,9 @@ private Operator operator;
         ConditionsLivraison = conditionsLivraison;
         this.incotermString = incotermString;
         this.operator = operator;
+        this.message = message;
+         this.banque = banque;
+         this.marchandiseInfo = marchandiseInfo;
     }
 
     public TitreImportation() {
@@ -215,6 +229,33 @@ private Operator operator;
 
     public void setOperator(Operator operator) {
         this.operator = operator;
+    }
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    public Banque getBanque() {
+        return banque;
+    }
+
+    public void setBanque(Banque banque) {
+        this.banque = banque;
+    }
+
+    public void setMarchandiseInfo(MarchandiseInfo marchandiseInfo) {
+        this.marchandiseInfo = marchandiseInfo;
+    }
+
+    public MarchandiseInfo getMarchandiseInfo() {
+        return marchandiseInfo;
+    }
+
+    public void setPaysProvenanceInfo(PaysProvenanceInfo paysProvenanceInfo) {
+        this.paysProvenanceInfo = paysProvenanceInfo;
     }
 }
 

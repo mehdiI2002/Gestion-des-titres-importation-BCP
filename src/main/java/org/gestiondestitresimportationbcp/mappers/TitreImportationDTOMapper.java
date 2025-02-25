@@ -15,10 +15,9 @@ import java.util.function.Function;
                 titreImportation.getMontantTotale(),
                 titreImportation.getMontantFOB(),
                 titreImportation.getMotantFret(),
-               titreImportation.getDevise(),
+                titreImportation.getDevise(),
                 titreImportation.getIncotermString(),
                 titreImportation.getOperator().getRibBancaire()
         );
-
     }
 }

@@ -1,4 +1,5 @@
 package org.gestiondestitresimportationbcp;
+import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
 import org.gestiondestitresimportationbcp.service.WatchFolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,5 +18,6 @@ public class GestionDesTitresImportationBcpApplication implements CommandLineRun
     @Override
     public void run(String... args) {
         watchFolder.fileswatcher();
+
     }
 }

@@ -7,6 +7,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
+
 public class MarchandiseInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
