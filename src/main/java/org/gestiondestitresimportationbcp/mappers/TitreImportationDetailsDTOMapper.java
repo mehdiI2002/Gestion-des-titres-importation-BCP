@@ -30,7 +30,7 @@ public class TitreImportationDetailsDTOMapper implements Function<TitreImportati
                 titreImportation.getBanque().getGuichet(),
                 titreImportation.getBanque().getLocalite(),
                 //title importation
-                titreImportation.getNumEnregistrement(),
+                titreImportation.getId().getNumEnregistrement(),
                 titreImportation.getCategorie(),
                 titreImportation.getTypeDedmande(),
                 titreImportation.getImportateur(),

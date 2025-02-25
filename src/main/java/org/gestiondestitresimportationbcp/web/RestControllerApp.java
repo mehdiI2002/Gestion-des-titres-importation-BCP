@@ -1,6 +1,7 @@
 package org.gestiondestitresimportationbcp.web;
 import org.gestiondestitresimportationbcp.dto.TitreImportationDTO;
 import org.gestiondestitresimportationbcp.dto.TitreImportationDetailsDTO;
+import org.gestiondestitresimportationbcp.models.TitreImportationId;
 import org.gestiondestitresimportationbcp.service.TitreImportationServices;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,8 +17,9 @@ public class RestControllerApp {
     public List<TitreImportationDTO> selectTittles(){
        return  titreImportation.afficherTitreImportation();
     }
-    @GetMapping("/detailTitle/{id}")
-    public TitreImportationDetailsDTO selectDetailsTitle(@PathVariable Long id) {
+    @GetMapping("/detailTitle/{numEnregistrement}/{headerMessage}")
+    public TitreImportationDetailsDTO selectDetailsTitle(@PathVariable Long numEnregistrement , @PathVariable Long headerMessage ) {
+        TitreImportationId id = new TitreImportationId(numEnregistrement,headerMessage);
         return titreImportation.afficherDetailTitreImportation(id);
     }
 

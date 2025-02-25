@@ -21,9 +21,9 @@ public class WatchFolder implements FileServices {
     public DemandeDomiciliationMessage parseFile(File file) {
         return null;
     }
-
+@Override
     public void fileswatcher() {
-        Path path = Paths.get("src\\main\\resources\\static");
+        Path path = Paths.get("C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP PFE\\Livrable\\Files");
         try (WatchService watchService = FileSystems.getDefault().newWatchService()) {
             path.register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
             System.out.println("Monitoring directory: " + path.toString());

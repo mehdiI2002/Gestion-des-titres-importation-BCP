@@ -10,14 +10,16 @@ import java.util.function.Function;
     @Override
     public TitreImportationDTO apply(TitreImportation titreImportation) {
        return  new TitreImportationDTO(
-                titreImportation.getNumEnregistrement(),
+                titreImportation.getId().getNumEnregistrement(),
+                titreImportation.getId().getNumeroMessage(),
                 titreImportation.getCategorie(),
                 titreImportation.getMontantTotale(),
                 titreImportation.getMontantFOB(),
                 titreImportation.getMotantFret(),
                 titreImportation.getDevise(),
                 titreImportation.getIncotermString(),
-                titreImportation.getOperator().getRibBancaire()
+                titreImportation.getOperator().getRibBancaire(),
+               titreImportation.getMessage().getTypeMessage()
         );
     }
 }
