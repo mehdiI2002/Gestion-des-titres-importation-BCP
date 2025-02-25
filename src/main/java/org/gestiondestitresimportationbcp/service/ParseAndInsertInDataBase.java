@@ -35,11 +35,8 @@ public class ParseAndInsertInDataBase {
             operatorServices.insertOperator(demande);
             banqueServices.insertBank(demande);
             marhandiseServices.insertManrchandise(demande);
-           paysProvenanceServices.insertPaysProvenanceInfo(demande);
-            System.out.println( "pays "+demande.getTitre().getPaysProvenanceInfo().getPays()
-            );
+            paysProvenanceServices.insertPaysProvenanceInfo(demande);
             titreImportationServices.insertTitle(demande);
-
         }
     }
 

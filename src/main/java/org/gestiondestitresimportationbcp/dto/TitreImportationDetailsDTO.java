@@ -1,5 +1,6 @@
 package org.gestiondestitresimportationbcp.dto;
 
+
 import java.util.Date;
 
 public record TitreImportationDetailsDTO (
@@ -24,6 +25,7 @@ public record TitreImportationDetailsDTO (
         long localite,
         //title
         Long numEnregistrement,
+
         int Categorie,
         int typeDedmande,
         String importateur,
@@ -43,7 +45,7 @@ public record TitreImportationDetailsDTO (
        String designation,
         double quantite ,
         int uniteComplementaire,
-      double poidsUnit,
+        double poidsUnit,
         ////paysprovenance
         String paysProvenance
 

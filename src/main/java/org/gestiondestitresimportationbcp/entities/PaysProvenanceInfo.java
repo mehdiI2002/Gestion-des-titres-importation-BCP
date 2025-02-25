@@ -30,12 +30,10 @@ public class PaysProvenanceInfo {
     public String getPays() {
         return pays;
     }
-
     public PaysProvenanceInfo(Long id, String pays) {
         this.id = id;
         this.pays = pays;
     }
-
     public PaysProvenanceInfo() {
     }
 }

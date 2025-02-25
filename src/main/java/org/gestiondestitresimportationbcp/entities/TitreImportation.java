@@ -5,18 +5,24 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlTransient;
+import org.gestiondestitresimportationbcp.models.TitreImportationId;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+
 @Entity
+@Table(name = "titre_importation", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"num_enregistrement", "header_message"})
+})
 public class TitreImportation  {
-   @Id
+    @Id
+    @EmbeddedId
+    private TitreImportationId id;
+   @Transient
    @XmlElement(name="NumEnregistrement")
-   @Column
-    private Long numEnregistrement;
+   private Long numEnregistrement;
     @OneToOne
     @XmlElement(name = "PaysProvenanceInfo", namespace = "http://portnet.ma/DemandeDomiciliation")
     private PaysProvenanceInfo paysProvenanceInfo;
-
 @Column
    @XmlElement(name = "Categorie")
     private int Categorie;
@@ -69,14 +75,14 @@ public class TitreImportation  {
     private String incotermString;
 
 @XmlTransient
-@OneToOne
+@ManyToOne
 private Operator operator;
 @XmlTransient
 @OneToOne
 private Message message ;
 
 @XmlTransient
-@OneToOne
+@ManyToOne
 private Banque banque;
 @XmlTransient
 @OneToOne
@@ -256,6 +262,14 @@ private Banque banque;
 
     public void setPaysProvenanceInfo(PaysProvenanceInfo paysProvenanceInfo) {
         this.paysProvenanceInfo = paysProvenanceInfo;
+    }
+
+    public void setId(TitreImportationId id) {
+        this.id = id;
+    }
+
+    public TitreImportationId getId() {
+        return id;
     }
 }
 

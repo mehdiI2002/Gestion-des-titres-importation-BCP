@@ -1,6 +1,7 @@
 package org.gestiondestitresimportationbcp.service;
 
 import org.gestiondestitresimportationbcp.entities.Banque;
+import org.gestiondestitresimportationbcp.models.BanqueId;
 import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
 import org.gestiondestitresimportationbcp.repositories.BanqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class BankServicesDefault  implements BanqueServices{
     @Override
     public void insertBank(DemandeDomiciliationMessage demandeDomiciliationMessage) {
          Banque banque = demandeDomiciliationMessage.getBanque();
+        BanqueId id = new BanqueId(demandeDomiciliationMessage.getBanque().getCodeBanque(),demandeDomiciliationMessage.getTitre().getNumEnregistrement());
+        demandeDomiciliationMessage.getBanque().setIdBanque(id);
          banqueRepository.save(banque);
     }
 
