@@ -38,8 +38,6 @@ public class Message {
     @Column(name = "Fonction")
     @XmlElement(name = "Fonction")
     private String fonction;
-@OneToOne
-private Message message;
     public Message() {
     }
 

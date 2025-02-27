@@ -1,10 +1,13 @@
 package org.gestiondestitresimportationbcp.service;
 
 import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
+import org.gestiondestitresimportationbcp.models.FichiersTitreBanqueMessage;
 
 import java.io.File;
 
-public interface FileServices {
+public interface FileParsingServices {
     DemandeDomiciliationMessage parseFile(File file);
-     void fileswatcher();
+
+     FichiersTitreBanqueMessage parseFICFIle( File file );
+
 }

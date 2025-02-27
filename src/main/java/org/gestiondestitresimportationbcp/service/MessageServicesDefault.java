@@ -2,6 +2,7 @@ package org.gestiondestitresimportationbcp.service;
 
 import org.gestiondestitresimportationbcp.entities.Message;
 import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
+import org.gestiondestitresimportationbcp.models.FichiersTitreBanqueMessage;
 import org.gestiondestitresimportationbcp.repositories.MessageRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +12,8 @@ import java.util.List;
 public class MessageServicesDefault implements MessageServices {
 
     MessageRepository messageRepository;
-    ParserFile parserFile;
-    public MessageServicesDefault(MessageRepository messageRepository, ParserFile parserFile) {
+    ParseDDDAndDPDFile parserFile;
+    public MessageServicesDefault(MessageRepository messageRepository, ParseDDDAndDPDFile parserFile) {
         this.messageRepository = messageRepository;
         this.parserFile = parserFile;
     }
@@ -24,5 +25,12 @@ public class MessageServicesDefault implements MessageServices {
     public List<Message> selectMessages() {
       return   messageRepository.findAll();
     }
+
+    @Override
+    public void insertMessage(FichiersTitreBanqueMessage fichiersMessage) {
+        Message message = fichiersMessage.getMessage();
+        messageRepository.save(message);
+    }
+
 
 }

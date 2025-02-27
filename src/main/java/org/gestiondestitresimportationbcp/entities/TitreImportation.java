@@ -8,11 +8,11 @@ import jakarta.xml.bind.annotation.XmlTransient;
 import org.gestiondestitresimportationbcp.models.TitreImportationId;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-
 @Entity
 @Table(name = "titre_importation", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"num_enregistrement", "header_message"})
 })
+
 public class TitreImportation  {
     @Id
     @EmbeddedId

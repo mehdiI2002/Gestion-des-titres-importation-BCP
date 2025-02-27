@@ -19,11 +19,5 @@ public class DemandeDomiciliation {
         return demandeDomiciliationMessage;
     }
 
-    @XmlAccessorType(XmlAccessType.FIELD)
-    public static class PaysProvenanceInfo {
-        @Id
-        private  Long  id ;
-        private String  PaysProvenance;
 
-    }
 }

@@ -1,7 +1,9 @@
 package org.gestiondestitresimportationbcp.service;
 
+import org.gestiondestitresimportationbcp.components.DirectoriesInitializer;
 import org.gestiondestitresimportationbcp.events.FileCreatedEvent;
 import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
+import org.gestiondestitresimportationbcp.models.FichiersTitreBanqueMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.event.EventListener;
@@ -10,9 +12,12 @@ import java.io.File;
 
 @Service
 public class ParseAndInsertInDataBase {
-        @Qualifier("parserFile")
+        @Qualifier("parseDDDAndDPDFile")
         @Autowired
-        private FileServices fileServicesParsing;
+        private FileParsingServices fileServicesParsing;
+        @Qualifier("parseFICFile")
+        @Autowired
+        private FileParsingServices fileServicesFIC;
         @Autowired
         private MessageServices messageServices;
         @Autowired
@@ -25,11 +30,24 @@ public class ParseAndInsertInDataBase {
         private MarhandiseServices marhandiseServices;
         @Autowired
         private PaysProvenanceServices paysProvenanceServices;
-        @EventListener
+        @Autowired
+        private ArchiveFiles archiveFiles;
+        @Autowired
+    DirectoriesInitializer directoriesInitializer;
+        @Autowired
+        TitreFICServices titreFICServices;
+        @Autowired
+        FichierServices fichierServices ;
+    @Autowired
+    private WatchFolderServicesDefault watchFolder;
+
+    @EventListener
         public void handleFileCreatedEvent(FileCreatedEvent event) {
             parseAndInsert(event.getFile());
+            archiveFiles.archivingfileInArchiveAndDeleteFileInFiles(event.getFile());
         }
         public void parseAndInsert(File file) {
+        if(file.getName().contains("DDD") || file.getName().contains("DPD")) {
             DemandeDomiciliationMessage demande = fileServicesParsing.parseFile(file);
             messageServices.insertMessage(demande);
             operatorServices.insertOperator(demande);
@@ -38,7 +56,15 @@ public class ParseAndInsertInDataBase {
             paysProvenanceServices.insertPaysProvenanceInfo(demande);
             titreImportationServices.insertTitle(demande);
         }
+        else if (file.getName().contains("FIC")){
+            FichiersTitreBanqueMessage fichiers   = fileServicesFIC.parseFICFIle(file);
+            messageServices.insertMessage(fichiers);
+            titreFICServices.insertTitreFIC(fichiers);
+            fichierServices.insertFile(fichiers);
+            System.out.println(fichiers.getFichierInfo().getFichiers().getFirst().getContenu());
+        }
     }
+}
 
 
 

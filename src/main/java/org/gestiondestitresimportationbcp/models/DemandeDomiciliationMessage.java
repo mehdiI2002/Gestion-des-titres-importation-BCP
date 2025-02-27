@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 public class DemandeDomiciliationMessage {
-    private static final Logger logger = LoggerFactory.getLogger(DemandeDomiciliationMessage.class);
 
     @XmlElement(name = "HeaderMessage")
     private Message headerMessage;
