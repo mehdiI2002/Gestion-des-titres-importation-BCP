@@ -1,28 +1,23 @@
-package org.gestiondestitresimportationbcp.entities;
+package org.gestiondestitresimportationbcp.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import org.gestiondestitresimportationbcp.models.TitreFICId;
 
-@Entity
+
+
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TitreFIC {
-    @EmbeddedId
-    private TitreFICId titreFICId;
-    @Transient
     @XmlElement(name = "NumEnregistrement")
     private Long numEnregistrement ;
     @Column
     @XmlElement(name = "RibBancaire")
     private String ribBancaire ;
 
-    public TitreFIC(TitreFICId titreFICId, Long numEnregistrement, String ribBancaire) {
-        this.titreFICId = titreFICId;
+
+    public TitreFIC(Long numEnregistrement, String ribBancaire) {
         this.numEnregistrement = numEnregistrement;
         this.ribBancaire = ribBancaire;
     }
@@ -38,7 +33,7 @@ public class TitreFIC {
         return ribBancaire;
     }
 
-    public void setTitreFICId(TitreFICId titreFICId) {
-        this.titreFICId = titreFICId;
-    }
+
+
+
 }

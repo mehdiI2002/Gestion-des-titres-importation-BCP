@@ -2,13 +2,21 @@ package org.gestiondestitresimportationbcp.mappers;
 
 import org.gestiondestitresimportationbcp.dto.TitreImportationDetailsDTO;
 import org.gestiondestitresimportationbcp.entities.TitreImportation;
+import org.gestiondestitresimportationbcp.repositories.PdfFileRepository;
+import org.gestiondestitresimportationbcp.service.PdfFileServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.function.Function;
 @Service
 public class TitreImportationDetailsDTOMapper implements Function<TitreImportation, TitreImportationDetailsDTO> {
+    @Autowired
+    private PdfFileServices pdfFileServices;
     @Override
     public TitreImportationDetailsDTO apply(TitreImportation titreImportation) {
+        List<String> pdfFilePaths =pdfFileServices.selectPdfsFortitle(titreImportation.getId().getNumEnregistrement());
+
         return new TitreImportationDetailsDTO(
                 ///message
                 titreImportation.getMessage().getNumeroMessage(),
@@ -52,7 +60,11 @@ public class TitreImportationDetailsDTOMapper implements Function<TitreImportati
                 titreImportation.getMarchandiseInfo().getUniteComplementaire(),
                 titreImportation.getMarchandiseInfo().getPoidsUnit(),
                 ///paysperovenance
-                titreImportation.getPaysProvenanceInfo().getPays()
+                titreImportation.getPaysProvenanceInfo().getPays(),
+                pdfFilePaths
+
+
+
         );
     }
 }

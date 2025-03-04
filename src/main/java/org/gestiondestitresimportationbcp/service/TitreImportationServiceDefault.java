@@ -14,6 +14,7 @@ import org.gestiondestitresimportationbcp.repositories.PaysProvenanceInfoReposit
 import org.gestiondestitresimportationbcp.repositories.TitreImportationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +28,10 @@ public class TitreImportationServiceDefault implements TitreImportationServices 
     private TitreImportationDetailsDTOMapper titreImportationDetailsDTOMapper;
      @Autowired
     PaysProvenanceInfoRepository paysProvenanceInfoRepository;
-    @Override
+    @Autowired
+    PdfFileServices pdfFileServices;
     @Transactional
-    public void insertTitle( DemandeDomiciliationMessage demandeDomiciliationMessage) {
+    public void insertTitle(DemandeDomiciliationMessage demandeDomiciliationMessage) {
         TitreImportation titreImportation = demandeDomiciliationMessage.getTitre();
         Operator operateur = demandeDomiciliationMessage.getOperateur();
         titreImportation.setOperator(operateur);
@@ -43,6 +45,7 @@ public class TitreImportationServiceDefault implements TitreImportationServices 
         TitreImportationId id  = new TitreImportationId(numEnregistrement,messageTitle);
         titreImportation.setId(id);
 
+
         titreImportationRepository.save(titreImportation);
     }
     @Override
@@ -54,10 +57,57 @@ public class TitreImportationServiceDefault implements TitreImportationServices 
     }
     @Override
     public TitreImportationDetailsDTO afficherDetailTitreImportation(TitreImportationId id) {
-        return titreImportationRepository.findByIdNumEnregistrementAndIdNumeroMessage(
+        TitreImportationDetailsDTO detailsDTO = titreImportationRepository.findByIdNumEnregistrementAndIdNumeroMessage(
                         id.getNumEnregistrement(),
                         id.getNumeroMessage())
                 .map(titreImportationDetailsDTOMapper::apply)
                 .orElse(null);
+
+        if (detailsDTO != null) {
+            List<String> pdfFilePaths = pdfFileServices.selectPdfsFortitle(id.getNumEnregistrement());
+            if (pdfFilePaths != null) {
+                return new TitreImportationDetailsDTO(
+                        detailsDTO.numeroMessage(),
+                        detailsDTO.emetteur(),
+                        detailsDTO.destinataire(),
+                        detailsDTO.dateMessage(),
+                        detailsDTO.typeMessage(),
+                        detailsDTO.fonction(),
+                        detailsDTO.idFicalUnique(),
+                        detailsDTO.nom(),
+                        detailsDTO.centre(),
+                        detailsDTO.typeIdentification(),
+                        detailsDTO.numIdentification(),
+                        detailsDTO.identifiantDouane(),
+                        detailsDTO.ribBancaire(),
+                        detailsDTO.codeBanque(),
+                        detailsDTO.guichet(),
+                        detailsDTO.localite(),
+                        detailsDTO.numEnregistrement(),
+                        detailsDTO.Categorie(),
+                        detailsDTO.typeDedmande(),
+                        detailsDTO.importateur(),
+                        detailsDTO.expediteur(),
+                        detailsDTO.regimeDouanier(),
+                        detailsDTO.bureauDouanier(),
+                        detailsDTO.montantTotale(),
+                        detailsDTO.montantFOB(),
+                        detailsDTO.motantFret(),
+                        detailsDTO.montantAssuranceAcessoires(),
+                        detailsDTO.devise(),
+                        detailsDTO.ConditionsLivraison(),
+                        detailsDTO.incotermString(),
+                        detailsDTO.nomenclature(),
+                        detailsDTO.paysOrigine(),
+                        detailsDTO.designation(),
+                        detailsDTO.quantite(),
+                        detailsDTO.uniteComplementaire(),
+                        detailsDTO.poidsUnit(),
+                        detailsDTO.paysProvenance(),
+                        pdfFilePaths
+                );
+            }
+        }
+        return detailsDTO;
     }
 }

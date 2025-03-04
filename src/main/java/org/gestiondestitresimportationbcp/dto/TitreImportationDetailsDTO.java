@@ -1,7 +1,6 @@
 package org.gestiondestitresimportationbcp.dto;
-
-
 import java.util.Date;
+import java.util.List;
 
 public record TitreImportationDetailsDTO (
         //message
@@ -16,7 +15,7 @@ public record TitreImportationDetailsDTO (
         String nom,
         int centre,
         String typeIdentification,
-         long numIdentification,
+        long numIdentification,
         long identifiantDouane,
         String ribBancaire,
         ///Banque
@@ -41,13 +40,14 @@ public record TitreImportationDetailsDTO (
         String incotermString,
         //Marchandise
         long nomenclature,
-       String paysOrigine,
-       String designation,
+        String paysOrigine,
+        String designation,
         double quantite ,
         int uniteComplementaire,
         double poidsUnit,
         ////paysprovenance
-        String paysProvenance
+        String paysProvenance ,
+         List<String> pdfFilePaths
 
 
 

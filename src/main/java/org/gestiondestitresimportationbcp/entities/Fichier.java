@@ -1,8 +1,5 @@
 package org.gestiondestitresimportationbcp.entities;
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -26,6 +23,13 @@ public class Fichier {
     @Transient
     @XmlElement(name = "Contenu-base64")
     private String  contenu ;
+
+
+    public void setContenu(String contenu) {
+        this.contenu = contenu;
+    }
+
+
 
     public String getContenu() {
         return contenu;
@@ -65,4 +69,6 @@ public class Fichier {
     public void setDate(Date date) {
         this.date = date;
     }
+
+
 }

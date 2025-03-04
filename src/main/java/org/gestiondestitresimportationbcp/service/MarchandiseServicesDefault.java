@@ -14,6 +14,7 @@ public class MarchandiseServicesDefault implements  MarhandiseServices{
     @Override
     public void insertManrchandise(DemandeDomiciliationMessage demande) {
         MarchandiseInfo marchandise = demande.getMarchandise().getMarchandiseInfo();
+
         marchandiseRepository.save(marchandise);
 
     }

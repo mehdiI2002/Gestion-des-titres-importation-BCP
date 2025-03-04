@@ -33,13 +33,12 @@ public class ParseAndInsertInDataBase {
         @Autowired
         private ArchiveFiles archiveFiles;
         @Autowired
-    DirectoriesInitializer directoriesInitializer;
-        @Autowired
-        TitreFICServices titreFICServices;
+        DirectoriesInitializer directoriesInitializer;
+
         @Autowired
         FichierServices fichierServices ;
-    @Autowired
-    private WatchFolderServicesDefault watchFolder;
+       @Autowired
+       DocumentService documentService;
 
     @EventListener
         public void handleFileCreatedEvent(FileCreatedEvent event) {
@@ -47,26 +46,22 @@ public class ParseAndInsertInDataBase {
             archiveFiles.archivingfileInArchiveAndDeleteFileInFiles(event.getFile());
         }
         public void parseAndInsert(File file) {
+
         if(file.getName().contains("DDD") || file.getName().contains("DPD")) {
             DemandeDomiciliationMessage demande = fileServicesParsing.parseFile(file);
             messageServices.insertMessage(demande);
             operatorServices.insertOperator(demande);
             banqueServices.insertBank(demande);
-            marhandiseServices.insertManrchandise(demande);
+           marhandiseServices.insertManrchandise(demande);
             paysProvenanceServices.insertPaysProvenanceInfo(demande);
             titreImportationServices.insertTitle(demande);
+
         }
         else if (file.getName().contains("FIC")){
             FichiersTitreBanqueMessage fichiers   = fileServicesFIC.parseFICFIle(file);
             messageServices.insertMessage(fichiers);
-            titreFICServices.insertTitreFIC(fichiers);
             fichierServices.insertFile(fichiers);
-            System.out.println(fichiers.getFichierInfo().getFichiers().getFirst().getContenu());
+            documentService.decodeContent(fichiers);
         }
     }
 }
-
-
-
-
-

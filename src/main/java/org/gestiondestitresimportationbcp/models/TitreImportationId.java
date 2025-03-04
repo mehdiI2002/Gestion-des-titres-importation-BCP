@@ -14,7 +14,6 @@ public class TitreImportationId implements Serializable {
         this.numEnregistrement = numEnregistrement;
         this.numeroMessage = numeroMessage;
     }
-
     // Getters and setters
     public Long getNumEnregistrement() {
         return numEnregistrement;
@@ -39,7 +38,6 @@ public class TitreImportationId implements Serializable {
         return Objects.equals(numEnregistrement, that.numEnregistrement) &&
                 Objects.equals(numeroMessage, that.numeroMessage);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(numEnregistrement, numeroMessage);

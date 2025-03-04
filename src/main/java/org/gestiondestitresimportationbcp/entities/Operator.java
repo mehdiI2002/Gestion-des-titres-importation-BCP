@@ -1,19 +1,18 @@
 package org.gestiondestitresimportationbcp.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import org.gestiondestitresimportationbcp.models.OperatorId;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Operator {
-    @Id
+    @EmbeddedId
     private OperatorId id ;
     @XmlElement(name="IdFiscalUnique")
     private long idFiscalUnique;
@@ -24,17 +23,19 @@ public class Operator {
 private int centre ;
     @XmlElement(name = "TypeIdentification")
 private String typeIdentification;
-
+@Transient
     @XmlElement(name = "NumIdentification")
 private long numIdentification;
     @XmlElement(name = "IdentifiantDouane")
 private long identifiantDouane;
     @XmlElement(name = "RibBancaire")
 private String ribBancaire ;
-    @OneToMany
+
+    @OneToMany(mappedBy = "operator")
     private List<TitreImportation> titresImportations ;
 
     public Operator() {
+        titresImportations = new ArrayList<>();
     }
 
     public Operator(long idFiscalUnique, String nom, int centre, String typeIdentification, long numIdentification, long identifiantDouane, String ribBancaire) {
@@ -45,6 +46,7 @@ private String ribBancaire ;
         this.numIdentification = numIdentification;
         this.identifiantDouane = identifiantDouane;
         this.ribBancaire = ribBancaire;
+        this.titresImportations = new ArrayList<>();
     }
 
     public long getIdentifiantDouane() {
@@ -105,10 +107,12 @@ private String ribBancaire ;
 
     public void setTitresImportations(List<TitreImportation> titresImportations) {
         this.titresImportations = titresImportations;
-
     }
-
     public void setId(OperatorId id) {
         this.id = id;
+    }
+
+    public List<TitreImportation> getTitresImportations() {
+        return titresImportations;
     }
 }

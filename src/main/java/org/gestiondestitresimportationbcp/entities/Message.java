@@ -15,14 +15,9 @@ public class Message {
     @Column(name = "Numero_Message")
     @XmlElement(name = "NumeroMessage")
     private Long numeroMessage;
-
-
     @Column(name = "Emetteur")
     @XmlElement(name = "Emetteur")
     private String emetteur;
-
-
-
     @Column(name = "Destinataire")
     @XmlElement(name = "Destinataire")
     private int destinataire;
@@ -33,8 +28,6 @@ public class Message {
     @XmlElement(name = "TypeMessage")
     @Column(name = "Type_De_Message")
     private String typeMessage;
-
-
     @Column(name = "Fonction")
     @XmlElement(name = "Fonction")
     private String fonction;
@@ -65,36 +58,7 @@ public class Message {
         return fonction;
     }
 
-    public Message(Long numeroMessage, String emetteur, int destinataire, Date dateMessage, String typeMessage, String fonction) {
-        this.numeroMessage = numeroMessage;
-        this.emetteur = emetteur;
-        this.destinataire = destinataire;
-        this.dateMessage = dateMessage;
-        this.typeMessage = typeMessage;
-        this.fonction = fonction;
-    }
 
-    public void setNumeroMessage(Long numeroMessage) {
-        this.numeroMessage = numeroMessage;
-    }
 
-    public void setEmetteur(String emetteur) {
-        this.emetteur = emetteur;
-    }
 
-    public void setDestinataire(int destinataire) {
-        this.destinataire = destinataire;
-    }
-
-    public void setDateMessage(Date dateMessage) {
-        this.dateMessage = dateMessage;
-    }
-
-    public void setTypeMessage(String typeMessage) {
-        this.typeMessage = typeMessage;
-    }
-
-    public void setFonction(String fonction) {
-        this.fonction = fonction;
-    }
 }

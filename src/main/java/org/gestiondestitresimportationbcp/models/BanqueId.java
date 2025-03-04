@@ -1,20 +1,21 @@
 package org.gestiondestitresimportationbcp.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class BanqueId implements Serializable {
-
     private Long codeBank;
     private Long numEnregistrement;
-
     public BanqueId() {
     }
 
     public BanqueId(Long codeBank, Long numEnregistrement) {
-        this.codeBank= codeBank;
+
         this.codeBank= codeBank;
         this.numEnregistrement = numEnregistrement;
     }

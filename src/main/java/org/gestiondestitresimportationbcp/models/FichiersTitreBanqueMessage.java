@@ -4,7 +4,6 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import org.gestiondestitresimportationbcp.entities.Message;
-import org.gestiondestitresimportationbcp.entities.TitreFIC;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class FichiersTitreBanqueMessage {

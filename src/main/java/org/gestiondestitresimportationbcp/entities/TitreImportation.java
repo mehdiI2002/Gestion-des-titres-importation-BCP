@@ -9,23 +9,20 @@ import org.gestiondestitresimportationbcp.models.TitreImportationId;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name = "titre_importation", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"num_enregistrement", "header_message"})
-})
 
 public class TitreImportation  {
-    @Id
+
     @EmbeddedId
     private TitreImportationId id;
-   @Transient
-   @XmlElement(name="NumEnregistrement")
-   private Long numEnregistrement;
-    @OneToOne
-    @XmlElement(name = "PaysProvenanceInfo", namespace = "http://portnet.ma/DemandeDomiciliation")
-    private PaysProvenanceInfo paysProvenanceInfo;
+
+
+
 @Column
    @XmlElement(name = "Categorie")
     private int Categorie;
+    @Transient
+    @XmlElement(name="NumEnregistrement")
+    private Long numEnregistrement;
 
     @Column
     @XmlElement(name ="TypeDemande")
@@ -87,28 +84,9 @@ private Banque banque;
 @XmlTransient
 @OneToOne
     private MarchandiseInfo marchandiseInfo;
-
- public TitreImportation(Long numEnregistrement, PaysProvenanceInfo paysProvenanceInfo, int categorie, int typeDedmande, String importateur, String expediteur, int regimeDouanier, int bureauDouanier, double montantTotale, double montantFOB, double motantFret, String montantAssuranceAcessoires, String devise, int conditionsLivraison, String incotermString, Operator operator,Message message,Banque banque,MarchandiseInfo marchandiseInfo) {
-        this.numEnregistrement = numEnregistrement;
-        this.paysProvenanceInfo = paysProvenanceInfo;
-        Categorie = categorie;
-        this.typeDedmande = typeDedmande;
-        this.importateur = importateur;
-        this.expediteur = expediteur;
-        this.regimeDouanier = regimeDouanier;
-        this.bureauDouanier = bureauDouanier;
-        this.montantTotale = montantTotale;
-        this.montantFOB = montantFOB;
-        this.motantFret = motantFret;
-        this.montantAssuranceAcessoires = montantAssuranceAcessoires;
-        this.devise = devise;
-        ConditionsLivraison = conditionsLivraison;
-        this.incotermString = incotermString;
-        this.operator = operator;
-        this.message = message;
-         this.banque = banque;
-         this.marchandiseInfo = marchandiseInfo;
-    }
+    @OneToOne
+    @XmlElement(name = "PaysProvenanceInfo", namespace = "http://portnet.ma/DemandeDomiciliation")
+    private PaysProvenanceInfo paysProvenanceInfo;
 
     public TitreImportation() {
     }
@@ -244,6 +222,8 @@ private Banque banque;
         this.message = message;
     }
 
+
+
     public Banque getBanque() {
         return banque;
     }
@@ -271,6 +251,8 @@ private Banque banque;
     public TitreImportationId getId() {
         return id;
     }
+
+
 }
 
 
