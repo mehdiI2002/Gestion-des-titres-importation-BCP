@@ -34,16 +34,20 @@ public class ParseAndInsertInDataBase {
         private ArchiveFiles archiveFiles;
         @Autowired
         DirectoriesInitializer directoriesInitializer;
-
         @Autowired
         FichierServices fichierServices ;
-       @Autowired
+        @Autowired
        DocumentService documentService;
+       @Autowired
+       AccuséServices accuséServices;
 
     @EventListener
         public void handleFileCreatedEvent(FileCreatedEvent event) {
+        if(accuséServices.generateAccuces(event.getFile())) {
             parseAndInsert(event.getFile());
-            archiveFiles.archivingfileInArchiveAndDeleteFileInFiles(event.getFile());
+
+        }
+        archiveFiles.archivingfileInArchiveAndDeleteFileInFiles(event.getFile());
         }
         public void parseAndInsert(File file) {
 
@@ -52,10 +56,9 @@ public class ParseAndInsertInDataBase {
             messageServices.insertMessage(demande);
             operatorServices.insertOperator(demande);
             banqueServices.insertBank(demande);
-           marhandiseServices.insertManrchandise(demande);
+            marhandiseServices.insertManrchandise(demande);
             paysProvenanceServices.insertPaysProvenanceInfo(demande);
             titreImportationServices.insertTitle(demande);
-
         }
         else if (file.getName().contains("FIC")){
             FichiersTitreBanqueMessage fichiers   = fileServicesFIC.parseFICFIle(file);

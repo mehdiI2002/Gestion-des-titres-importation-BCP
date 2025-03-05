@@ -20,7 +20,7 @@ public class Message {
     private String emetteur;
     @Column(name = "Destinataire")
     @XmlElement(name = "Destinataire")
-    private int destinataire;
+    private String destinataire;//elle a ete int
 
     @Column(name = "Date_de_Message")
     @XmlElement(name = "DateMessage")
@@ -34,6 +34,15 @@ public class Message {
     public Message() {
     }
 
+    public Message(Long numeroMessage, String emetteur, String destinataire, Date dateMessage, String typeMessage, String fonction) {
+        this.numeroMessage = numeroMessage;
+        this.emetteur = emetteur;
+        this.destinataire = destinataire;
+        this.dateMessage = dateMessage;
+        this.typeMessage = typeMessage;
+        this.fonction = fonction;
+    }
+
     public Long getNumeroMessage() {
         return numeroMessage;
     }
@@ -42,7 +51,7 @@ public class Message {
         return emetteur;
     }
 
-    public int getDestinataire() {
+    public String getDestinataire() {
         return destinataire;
     }
 

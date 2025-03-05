@@ -6,7 +6,7 @@ public record TitreImportationDetailsDTO (
         //message
         Long numeroMessage,
         String emetteur,
-        int destinataire ,
+        String  destinataire ,
         Date dateMessage ,
         String typeMessage,
         String fonction,

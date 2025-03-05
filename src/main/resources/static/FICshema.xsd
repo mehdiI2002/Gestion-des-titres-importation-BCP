@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pn="http://portnet.ma/FichiersTitreBanque" targetNamespace="http://portnet.ma/FichiersTitreBanque" elementFormDefault="qualified">
+
+    <!-- Définition de l'élément racine -->
+    <xs:element name="FichiersTitreBanque">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="FichiersTitreBanqueMessage">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="HeaderMessage">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NumeroMessage" type="xs:string"/>
+                                        <xs:element name="Emetteur" type="xs:string"/>
+                                        <xs:element name="Destinataire" type="xs:string"/>
+                                        <xs:element name="DateMessage" type="xs:dateTime"/>
+                                        <xs:element name="TypeMessage" type="xs:string"/>
+                                        <xs:element name="Fonction" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Titre">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NumEnregistrement" type="xs:string"/>
+                                        <xs:element name="RibBancaire" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="FichierInfo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Fichier" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Nom" type="xs:string"/>
+                                                    <xs:element name="Description" type="xs:string"/>
+                                                    <xs:element name="Date" type="xs:dateTime"/>
+                                                    <xs:element name="Contenu-base64" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

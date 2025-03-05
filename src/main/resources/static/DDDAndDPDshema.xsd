@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://portnet.ma/DemandeDomiciliation"
+        xmlns:pn="http://portnet.ma/DemandeDomiciliation"
+        elementFormDefault="unqualified"
+        attributeFormDefault="unqualified">
+
+    <!-- Élément racine -->
+    <xs:element name="DemandeDomiciliation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="DemandeDomiciliationMessage">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- Section HeaderMessage -->
+                            <xs:element name="HeaderMessage">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NumeroMessage" type="xs:unsignedInt"/>
+                                        <xs:element name="Emetteur" type="xs:string"/>
+                                        <xs:element name="Destinataire" type="xs:unsignedByte"/>
+                                        <xs:element name="DateMessage" type="xs:dateTime"/>
+                                        <xs:element name="TypeMessage" type="xs:string"/>
+                                        <xs:element name="Fonction" type="xs:unsignedByte"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Section Operateur -->
+                            <xs:element name="Operateur">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Nom" type="xs:string"/>
+                                        <xs:element name="Centre" type="xs:unsignedByte"/>
+                                        <xs:element name="TypeIdentification" type="xs:string"/>
+                                        <xs:element name="NumIdentification" type="xs:unsignedInt"/>
+                                        <xs:element name="IdentifiantDouane" type="xs:unsignedInt"/>
+                                        <xs:element name="RibBancaire" type="xs:integer"/>
+                                        <xs:element name="IdFiscalUnique" type="xs:unsignedInt"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Section Banque -->
+                            <xs:element name="Banque">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="CodeBanque" type="xs:unsignedByte"/>
+                                        <xs:element name="Guichet" type="xs:unsignedShort"/>
+                                        <xs:element name="Localite" type="xs:unsignedShort"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Section Titre -->
+                            <xs:element name="Titre">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NumEnregistrement" type="xs:string"/>
+                                        <xs:element name="Categorie" type="xs:unsignedByte"/>
+                                        <xs:element name="TypeDemande" type="xs:unsignedByte"/>
+                                        <xs:element name="Importateur" type="xs:string"/>
+                                        <xs:element name="Expediteur" type="xs:string"/>
+                                        <xs:element name="RegimeDouanier" type="xs:string"/>
+                                        <xs:element name="BureauDouanier" type="xs:unsignedShort"/>
+                                        <xs:element name="MontantTotal" type="xs:decimal"/>
+                                        <xs:element name="MontantFOB" type="xs:decimal"/>
+                                        <xs:element name="MontantFret" type="xs:decimal"/>
+                                        <xs:element name="MontantAssuranceAcessoires" type="xs:decimal"/>
+                                        <xs:element name="Devise" type="xs:string"/>
+                                        <xs:element name="ConditionsLivraison" type="xs:unsignedByte"/>
+                                        <xs:element name="Incoterm" type="xs:string"/>
+                                        <xs:element name="NumeroFichier" type="xs:integer" minOccurs="0" nillable="true" default="0"/>
+                                        <!-- PaysProvenanceInfo est qualifié pour correspondre à pn:PaysProvenanceInfo dans le XML -->
+                                        <xs:element name="PaysProvenanceInfo" form="qualified">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="PaysProvenance" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Section Marchandise -->
+                            <xs:element name="Marchandise" minOccurs="0" form="qualified">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="MarchandiseInfo">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Nomenclature" type="xs:unsignedLong"/>
+                                                    <xs:element name="PaysOrigine" type="xs:string"/>
+                                                    <xs:element name="Designation" type="xs:string"/>
+                                                    <xs:element name="Quantite" type="xs:decimal"/>
+                                                    <xs:element name="UnitComplementaire" type="xs:string"/>
+                                                    <xs:element name="PoidNet" type="xs:decimal"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

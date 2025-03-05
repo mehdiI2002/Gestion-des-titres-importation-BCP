@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ReponseGenerique xmlns:ns2="http://portnet.ma/ReponseGenerique">
+    <ReponseGeneriqueMessage>
+        <HeaderMessage>
+            <NumeroMessage>3293619544908974782</NumeroMessage>
+            <Emetteur>190</Emetteur>
+            <Destinataire>PortNet</Destinataire>
+            <DateMessage>2025-03-05T11:37:15.363+01:00</DateMessage>
+            <TypeMessage>REP</TypeMessage>
+            <Fonction>R</Fonction>
+        </HeaderMessage>
+        <MessageRecu>
+            <ReferenceEmetteur>233444</ReferenceEmetteur>
+            <TypeMessage>FIC</TypeMessage>
+            <Fonction>9</Fonction>
+            <Date>2025-03-05T11:37:15.363+01:00</Date>
+        </MessageRecu>
+        <Accuse>
+            <Code>ERROR</Code>
+            <Description>Prise En charge incorrect</Description>
+        </Accuse>
+    </ReponseGeneriqueMessage>
+</ns2:ReponseGenerique>
