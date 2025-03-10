@@ -6,21 +6,19 @@ import jakarta.xml.bind.annotation.XmlElement;
 import org.gestiondestitresimportationbcp.entities.Message;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResponseGeneriqueMessage {
-    public ResponseGeneriqueMessage(Message headerMessage, MessageRecu messageRecu, Accuse accuse) {
+    public ResponseGeneriqueMessage(Message headerMessage, MessageRecuAccuse messageRecu, Accuse accuse) {
         this.headerMessage = headerMessage;
         this.messageRecu = messageRecu;
         this.accuse = accuse;
     }
-
-    public ResponseGeneriqueMessage(Message headerMessage,MessageRecu messageRecu) {
+    public ResponseGeneriqueMessage(Message headerMessage, MessageRecuAccuse messageRecu) {
         this.headerMessage = headerMessage;
         this.messageRecu = messageRecu;
     }
-
     @XmlElement(name = "HeaderMessage")
     Message headerMessage;
     @XmlElement(name = "MessageRecu")
-    MessageRecu messageRecu;
+    MessageRecuAccuse messageRecu;
     @XmlElement(name = "Accuse")
     Accuse accuse;
 
@@ -31,7 +29,7 @@ public class ResponseGeneriqueMessage {
         return headerMessage;
     }
 
-    public MessageRecu getMessageRecu() {
+    public MessageRecuAccuse getMessageRecu() {
         return messageRecu;
     }
 

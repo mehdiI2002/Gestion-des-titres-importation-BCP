@@ -31,7 +31,9 @@ public class RestControllerApp {
     @GetMapping ("/downloadPdf")
     public ResponseEntity<FileSystemResource> transformFileToPDF(@RequestParam String filePath) throws IOException {
        return convertToPdf.transformFileToPDF(filePath);
-
+    }
+    @GetMapping("/accepter/{numEnregistrment}" )
+    public void accepterTitre(){
 
     }
 

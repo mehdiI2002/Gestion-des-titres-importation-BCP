@@ -28,24 +28,18 @@ public class Fichier {
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
-
-
-
     public String getContenu() {
         return contenu;
     }
 
     public Fichier() {
     }
-
     public FichierID getId() {
         return id;
     }
-
     public String getNom() {
         return nom;
     }
-
     public String getDescription() {
         return description;
     }

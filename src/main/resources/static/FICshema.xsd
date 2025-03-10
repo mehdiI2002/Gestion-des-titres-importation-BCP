@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pn="http://portnet.ma/FichiersTitreBanque" targetNamespace="http://portnet.ma/FichiersTitreBanque" elementFormDefault="qualified">
-
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:pn="http://portnet.ma/FichiersTitreBanque"
+           targetNamespace="http://portnet.ma/FichiersTitreBanque"
+           elementFormDefault="unqualified">
     <!-- Définition de l'élément racine -->
     <xs:element name="FichiersTitreBanque">
         <xs:complexType>
@@ -28,22 +29,8 @@
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="FichierInfo">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="Fichier" maxOccurs="unbounded">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element name="Nom" type="xs:string"/>
-                                                    <xs:element name="Description" type="xs:string"/>
-                                                    <xs:element name="Date" type="xs:dateTime"/>
-                                                    <xs:element name="Contenu-base64" type="xs:string"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
+                            <!-- Correction: Définition de l'élément FichierInfo -->
+                            <xs:element name="FichierInfo" form="qualified" type="pn:FichierInfoType"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -51,4 +38,33 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- Définition du type pour FichierInfo -->
+    <xs:complexType name="FichierInfoType">
+        <xs:sequence>
+            <xs:element name="Fichier" type="pn:FichierType"  maxOccurs="100"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Définition du type pour Fichier -->
+    <xs:complexType name="FichierType">
+        <xs:sequence>
+            <!-- Ajout d'un pattern pour accepter des caractères spéciaux comme # -->
+            <xs:element name="Nom">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[A-Za-z0-9#_.\-]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Description" type="xs:string"/>
+            <xs:element name="Date" type="xs:dateTime"/>
+            <!-- Assurer que le contenu est bien encodé en Base64 -->
+            <xs:element name="Contenu-base64">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

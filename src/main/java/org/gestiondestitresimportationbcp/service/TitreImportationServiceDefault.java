@@ -110,4 +110,14 @@ public class TitreImportationServiceDefault implements TitreImportationServices 
         }
         return detailsDTO;
     }
+    @Override
+    public void accepterTitre(Long numEnregistrement) {
+      /*  TitreImportation titre = titreImportationRepository.findByIdNumeroMessage(numEnregistrement);
+        String directoryName = "C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP_PFE\\Livrable\\Response";
+        MessageReponse messageReponse = new MessageReponse(titre.getMessage().getNumeroMessage(),titre.getMessage().getEmetteur(),titre.getMessage().getDestinataire(),titre.getMessage().getDateMessage(),
+                titre.getMessage().getTypeMessage(),titre.getMessage().getFonction(),
+                titre.getMessage().getNumeroMessage());*/
+
+
+    }
 }

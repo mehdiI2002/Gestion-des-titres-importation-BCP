@@ -13,7 +13,6 @@ public interface TitreImportationServices {
     void insertTitle(DemandeDomiciliationMessage demandeDomiciliationMessage);
 
     List<TitreImportationDTO> afficherTitreImportation();
-
     TitreImportationDetailsDTO afficherDetailTitreImportation(TitreImportationId id);
-
+     void accepterTitre(Long numEnregistrement);
 }

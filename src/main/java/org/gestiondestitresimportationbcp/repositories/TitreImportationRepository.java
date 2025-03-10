@@ -8,5 +8,6 @@ import java.util.Optional;
 
 public interface TitreImportationRepository extends JpaRepository<TitreImportation, TitreImportationId> {
     Optional<TitreImportation> findByIdNumEnregistrementAndIdNumeroMessage(Long numEnregistrement, Long numeroMessage);
+ //   TitreImportation findByIdNumeroMessage(Long numEnregistrement);
 
 }

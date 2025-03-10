@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Service
-public class TranformObjectsToXmlFile {
+public class TranformObjectsToAccuseFile {
     public void tranformReponseToXml(ResponseGeneriqueMessage message){
         try{
         ResponseGenerique response = new ResponseGenerique(message);

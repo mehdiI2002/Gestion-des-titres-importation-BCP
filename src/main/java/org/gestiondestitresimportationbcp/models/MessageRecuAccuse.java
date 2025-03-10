@@ -8,7 +8,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class MessageRecu {
+public class MessageRecuAccuse {
     @XmlElement(name = "ReferenceEmetteur")
     private long referenceEmetteur;
     @XmlElement(name = "TypeMessage")
@@ -18,13 +18,29 @@ public class MessageRecu {
     @XmlElement(name = "Date")
     private Date date ;
 
-    public MessageRecu(long referenceEmetteur, String typeMessage, int fonction, Date date) {
+    public MessageRecuAccuse(long referenceEmetteur, String typeMessage, int fonction, Date date) {
         this.referenceEmetteur = referenceEmetteur;
         this.typeMessage = typeMessage;
         this.fonction = fonction;
         this.date = date;
     }
 
-    public MessageRecu() {
+    public MessageRecuAccuse() {
+    }
+
+    public long getReferenceEmetteur() {
+        return referenceEmetteur;
+    }
+
+    public String getTypeMessage() {
+        return typeMessage;
+    }
+
+    public int getFonction() {
+        return fonction;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }
