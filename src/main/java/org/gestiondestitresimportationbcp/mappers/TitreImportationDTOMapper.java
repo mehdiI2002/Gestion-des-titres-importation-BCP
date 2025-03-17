@@ -19,7 +19,7 @@ import java.util.function.Function;
                 titreImportation.getDevise(),
                 titreImportation.getIncotermString(),
                 titreImportation.getOperator().getRibBancaire(),
-               titreImportation.getMessage().getTypeMessage()
+                titreImportation.getMessage().getTypeMessage()
         );
     }
 }

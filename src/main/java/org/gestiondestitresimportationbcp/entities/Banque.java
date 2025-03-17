@@ -48,7 +48,9 @@ private List<TitreImportation> titreImportations;
         return titreImportations;
     }
 
-
+    public BanqueId getIdBanque() {
+        return idBanque;
+    }
 
     public void setIdBanque(BanqueId idBanque) {
         this.idBanque = idBanque;

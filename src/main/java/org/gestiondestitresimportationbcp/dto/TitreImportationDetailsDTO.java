@@ -1,4 +1,7 @@
 package org.gestiondestitresimportationbcp.dto;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +26,7 @@ public record TitreImportationDetailsDTO (
         long guichet,
         long localite,
         //title
+        @JsonSerialize(using = ToStringSerializer.class)
         Long numEnregistrement,
 
         int Categorie,
@@ -43,7 +47,7 @@ public record TitreImportationDetailsDTO (
         String paysOrigine,
         String designation,
         double quantite ,
-        int uniteComplementaire,
+        String uniteComplementaire,
         double poidsUnit,
         ////paysprovenance
         String paysProvenance ,

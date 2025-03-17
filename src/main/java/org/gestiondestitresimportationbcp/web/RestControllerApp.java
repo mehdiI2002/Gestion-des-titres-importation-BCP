@@ -32,9 +32,16 @@ public class RestControllerApp {
     public ResponseEntity<FileSystemResource> transformFileToPDF(@RequestParam String filePath) throws IOException {
        return convertToPdf.transformFileToPDF(filePath);
     }
-    @GetMapping("/accepter/{numEnregistrment}" )
-    public void accepterTitre(){
+    @GetMapping("/accepter/{numeromessage}" )
+    public void accepterTitre(@PathVariable Long  numeromessage){
+    titreImportation.accepterTitre(numeromessage);
+    }
+    @GetMapping("/refuser/{numeromessage}/{motif}")
+    public void refuserTitre(@PathVariable Long numeromessage,@PathVariable String motif){
+       titreImportation.refuserTitre(numeromessage,motif);
+    }
+    @GetMapping  ("/research")
+        public void researchByNumEnregistement(){
 
     }
-
 }

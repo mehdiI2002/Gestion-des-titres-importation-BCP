@@ -9,14 +9,10 @@ import org.gestiondestitresimportationbcp.models.TitreImportationId;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-
+@Table
 public class TitreImportation  {
-
     @EmbeddedId
     private TitreImportationId id;
-
-
-
 @Column
    @XmlElement(name = "Categorie")
     private int Categorie;
@@ -27,6 +23,8 @@ public class TitreImportation  {
     @Column
     @XmlElement(name ="TypeDemande")
     private int typeDedmande;
+    @Column
+    private String etat = "non traiter";
 
 @Column
     @XmlElement(name  = "Importateur")
@@ -252,7 +250,13 @@ private Banque banque;
         return id;
     }
 
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
 
+    public String getEtat() {
+        return etat;
+    }
 }
 
 

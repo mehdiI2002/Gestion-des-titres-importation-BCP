@@ -45,6 +45,7 @@ public class ParseAndInsertInDataBase {
         parseAndInsert(event.getFile());
     }
      void parseAndInsert(File file){
+
         if (file.getName().contains("DDD") || file.getName().contains("DPD")) {
              DemandeDomiciliationMessage message =  fileServicesParsing.parseFile(file);
              if (accuséServices.generateAccucesDDDAndDPD(file, message)) {

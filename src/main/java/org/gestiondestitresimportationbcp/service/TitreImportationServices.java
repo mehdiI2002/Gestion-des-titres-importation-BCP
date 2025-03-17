@@ -14,5 +14,6 @@ public interface TitreImportationServices {
 
     List<TitreImportationDTO> afficherTitreImportation();
     TitreImportationDetailsDTO afficherDetailTitreImportation(TitreImportationId id);
-     void accepterTitre(Long numEnregistrement);
+     void accepterTitre(Long numeroMessage);
+     void refuserTitre(Long numeroMessage,String motif);
 }

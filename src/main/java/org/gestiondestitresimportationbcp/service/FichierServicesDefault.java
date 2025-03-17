@@ -13,6 +13,7 @@ public class FichierServicesDefault implements  FichierServices{
     public void decode(FichiersTitreBanqueMessage fichiersMessage) {
         List<Fichier> fichiers = fichiersMessage.getFichierInfo().getFichiers();
     }
+
     @Autowired
     FichierRepository fichierRepository;
     @Override

@@ -26,6 +26,10 @@ public class DirectoriesInitializer {
         if (!archiveDirectory.exists()) {
             archiveDirectory.mkdirs();
         }
+        File repDocs = new File("C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP_PFE\\Livrable\\docs");
+        if(!repDocs.exists()){
+            repDocs.mkdirs();
+        }
     }
     public File createArchiveFile(String fileName) {
         File archiveFile = new File("C:\\Users\\lenovo\\OneDrive\\Desktop\\myDesktop\\BCP_PFE\\Livrable\\Archives\\" + fileName);

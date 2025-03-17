@@ -28,7 +28,6 @@ public class ConvertToPdf {
                 .contentType(MediaType.APPLICATION_PDF)
                 .contentLength(pdfFile.length())
                 .body(resource);
-
         }
 
 }

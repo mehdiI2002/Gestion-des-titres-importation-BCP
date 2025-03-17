@@ -2,9 +2,8 @@ package org.gestiondestitresimportationbcp.service;
 
 import org.gestiondestitresimportationbcp.entities.Fichier;
 import org.gestiondestitresimportationbcp.entities.PdfFile;
-import org.gestiondestitresimportationbcp.models.DemandeDomiciliationMessage;
+
 import org.gestiondestitresimportationbcp.models.FichiersTitreBanqueMessage;
-import org.gestiondestitresimportationbcp.models.TitreFIC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Base64;
@@ -46,7 +45,6 @@ PdfFileServices pdfFileServices;
                         PdfFile pdf = new PdfFile(null,pdfFilePath,numEnregistrement);
 
                         pdfFileServices.insertPdfFile(pdf);
-
 
                     }
                 } catch (IllegalArgumentException e) {

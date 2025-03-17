@@ -61,7 +61,7 @@
             <!-- Assurer que le contenu est bien encodé en Base64 -->
             <xs:element name="Contenu-base64">
                 <xs:simpleType>
-                    <xs:restriction base="xs:string">
+                    <xs:restriction base="xs:base64Binary">
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>

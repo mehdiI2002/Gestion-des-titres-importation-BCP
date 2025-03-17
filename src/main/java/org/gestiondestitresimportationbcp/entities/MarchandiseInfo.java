@@ -11,7 +11,7 @@ public class MarchandiseInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  marchandiseId;
-@Transient
+
     @XmlElement(name = "Nomenclature")
     private  long nomenclature;
 
@@ -29,7 +29,7 @@ public class MarchandiseInfo {
 
     @Column
     @XmlElement(name = "UnitComplementaire")
-    private int uniteComplementaire;
+    private String uniteComplementaire;
 
     @Column
     @XmlElement(name = "PoidNet")
@@ -55,7 +55,7 @@ public class MarchandiseInfo {
         return quantite;
     }
 
-    public int getUniteComplementaire() {
+    public String getUniteComplementaire() {
         return uniteComplementaire;
     }
 
@@ -81,7 +81,7 @@ public class MarchandiseInfo {
         this.quantite = quantite;
     }
 
-    public void setUniteComplementaire(int uniteComplementaire) {
+    public void setUniteComplementaire(String uniteComplementaire) {
         this.uniteComplementaire = uniteComplementaire;
     }
 
@@ -89,5 +89,7 @@ public class MarchandiseInfo {
         this.poidsUnit = poidsUnit;
     }
 
-
+    public Long getMarchandiseId() {
+        return marchandiseId;
+    }
 }

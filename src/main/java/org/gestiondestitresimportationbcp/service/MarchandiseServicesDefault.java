@@ -16,7 +16,6 @@ public class MarchandiseServicesDefault implements  MarhandiseServices{
         MarchandiseInfo marchandise = demande.getMarchandise().getMarchandiseInfo();
 
         marchandiseRepository.save(marchandise);
-
     }
 
     @Override

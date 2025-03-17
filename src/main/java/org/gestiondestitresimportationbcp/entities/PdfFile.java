@@ -10,11 +10,10 @@ public class PdfFile{
     private Long id ;
     @Column
     private String filePath;
-@Column
-private Long numeroEnregistrement ;
+   @Column
+   private Long numeroEnregistrement ;
 public PdfFile() {
     }
-
     public Long getId() {
         return id;
     }
@@ -31,16 +30,12 @@ public PdfFile() {
     public Long getNumeroEnregistrement() {
         return numeroEnregistrement;
     }
-
     public void setNumeroEnregistrement(Long numeroEnregistrement) {
         this.numeroEnregistrement = numeroEnregistrement;
     }
-
     public PdfFile(Long id, String filePath, Long numeroEnregistrement) {
         this.id = id;
         this.filePath = filePath;
         this.numeroEnregistrement = numeroEnregistrement;
     }
-
-
 }

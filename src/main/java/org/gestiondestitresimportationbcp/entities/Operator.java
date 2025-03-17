@@ -115,4 +115,8 @@ private String ribBancaire ;
     public List<TitreImportation> getTitresImportations() {
         return titresImportations;
     }
+
+    public OperatorId getId() {
+        return id;
+    }
 }
